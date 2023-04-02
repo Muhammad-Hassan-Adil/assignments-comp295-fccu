@@ -81,6 +81,30 @@ void addTile(int (&board)[ROWS][COLS]) {
     }
 }
 
+void Shift(int (&board)[ROWS][COLS],char Move) {
+    switch(Move){
+        case 'w':
+            for (int j = 0; j < COLS; j++) {
+                int k = 0;
+                for (int i = 0; i < ROWS; i++) {
+                    if (board[i][j] != 0) {
+                        if (k != i) {
+                            board[k][j] = board[i][j];
+                            board[i][j] = 0;
+                        }
+                        if (k > 0 && board[k][j] == board[k-1][j]) {
+                            board[k-1][j] *= 2;
+                            score += board[k-1][j];
+                            board[k][j] = 0;
+                        }
+                        k++;
+                    }
+                }
+            }
+            break;
+    }
+}
+
 int main() {
     system("clear");
     int option;
