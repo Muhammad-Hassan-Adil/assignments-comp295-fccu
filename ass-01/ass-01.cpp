@@ -63,6 +63,24 @@ bool checkGameOver(int (&board)[ROWS][COLS]) {
     return true;
 }
 
+void addTile(int (&board)[ROWS][COLS]) {
+    while (true) {
+        int row = rand() % ROWS;
+        int col = rand() % COLS;
+        int num = rand() % 2;
+        if (board[row][col] == 0) {
+            if (num == 0){
+                board[row][col] = 2;
+                break;
+            }
+            else{
+                board[row][col] = 4;
+                break;
+            }
+        }
+    }
+}
+
 int main() {
     system("clear");
     int option;
