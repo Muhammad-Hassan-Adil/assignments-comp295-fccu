@@ -8,6 +8,35 @@ const int ROWS = 4;
 const int COLS = 4;
 int score;
 
+void printBoard(int (&board)[ROWS][COLS]) {
+    cout << "\033[31m|-----------------------|" << endl;
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (board[i][j] == 0){
+                cout << "\033[31m|  " << "\033[36m" <<board[i][j] << "  ";
+            }
+            else if (board[i][j] >= 10 && board[i][j] < 100){
+                cout << "\033[31m|  " << "\033[0;33m" <<board[i][j] << " ";
+            }
+            else if (board[i][j] >= 100 && board[i][j] < 1000){
+                cout << "\033[31m| " << "\033[1;32m" <<board[i][j] << " ";
+            }
+            else if (board[i][j] >= 1000){
+                cout << "\033[31m| " << "\033[32m" <<board[i][j] << "";
+            }
+            else{
+                cout << "\033[31m|  " << "\033[38;5;208m" <<board[i][j] << "  ";
+            }
+        }
+        cout << "\033[31m|" << endl;
+        for (int j = 0; j < COLS; j++) {
+            cout << "\033[31m|-----";
+        }
+        cout << "\033[31m|" << endl;
+    }
+    cout << "\033[1;36mScore: " << score << endl;
+}
+
 int main() {
     system("clear");
     int option;
