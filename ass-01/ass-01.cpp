@@ -102,6 +102,25 @@ void Shift(int (&board)[ROWS][COLS],char Move) {
                 }
             }
             break;
+        case 's':
+            for (int j = 0; j < COLS; j++) {
+                int k = ROWS - 1;
+                for (int i = ROWS - 1; i >= 0; i--) {
+                    if (board[i][j] != 0) {
+                        if (k != i) {
+                            board[k][j] = board[i][j];
+                            board[i][j] = 0;
+                        }
+                        if (k < ROWS - 1 && board[k][j] == board[k+1][j]) {
+                            board[k+1][j] *= 2;
+                            score += board[k+1][j];
+                            board[k][j] = 0;
+                        }
+                        k--;
+                    }
+                }
+            }
+            break;
     }
 }
 
