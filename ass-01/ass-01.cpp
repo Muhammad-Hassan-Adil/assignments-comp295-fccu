@@ -1,4 +1,12 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
 
+using namespace std;
+
+const int ROWS = 4;
+const int COLS = 4;
+int score;
 
 int main() {
     system("clear");
