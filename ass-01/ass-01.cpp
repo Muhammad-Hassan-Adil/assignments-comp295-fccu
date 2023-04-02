@@ -37,6 +37,32 @@ void printBoard(int (&board)[ROWS][COLS]) {
     cout << "\033[1;36mScore: " << score << endl;
 }
 
+bool checkGameOver(int (&board)[ROWS][COLS]) {
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (board[i][j] == 2048) {
+                cout << "\033[32mTile 2048 made!! You won!\n";
+                return true;
+            }
+        }
+    }
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            if (board[i][j] == 0) {
+                return false;
+            }
+            if (i != ROWS - 1 && board[i][j] == board[i+1][j]) {
+                return false;
+            }
+            if (j != COLS - 1 && board[i][j] == board[i][j+1]) {
+                return false;
+            }
+        }
+    }
+    cout << "\033[31mNo more tiles left!\n";
+    return true;
+}
+
 int main() {
     system("clear");
     int option;
