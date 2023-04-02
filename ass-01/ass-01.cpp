@@ -140,7 +140,27 @@ void Shift(int (&board)[ROWS][COLS],char Move) {
                 }
             }
             break;
+        case 'd':
+            for (int i = 0; i < ROWS; i++) {
+                int k = COLS - 1;
+                for (int j = COLS - 1; j >= 0; j--) {
+                    if (board[i][j] != 0) {
+                        if (k != j) {
+                            board[i][k] = board[i][j];
+                            board[i][j] = 0;
+                        }
+                        if (k < COLS - 1 && board[i][k] == board[i][k+1]) {
+                            board[i][k+1] *= 2;
+                            score += board[i][k+1];
+                            board[i][k] = 0;
+                        }
+                        k--;
+                    }
+                }
+            }
+            break;
     }
+    addTile(board);
 }
 
 int main() {
